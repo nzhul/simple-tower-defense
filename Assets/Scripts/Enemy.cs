@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -8,14 +9,19 @@ public class Enemy : MonoBehaviour
 	GameObject pathGO;
 	Transform targetPathNode;
 	int pathNodeIndex = 0;
+	public GameObject DeathEffectParticlePrefab;
 
 	public float speed = 10;
 	public float health = 1f;
 	public int moneyValue = 10;
+	private float maxHealth;
+
+	public Image HealthBar;
 
 	void Start()
 	{
 		pathGO = GameObject.Find("Path");
+		maxHealth = health;
 	}
 
 	void Update()
@@ -78,11 +84,14 @@ public class Enemy : MonoBehaviour
 		{
 			Die();
 		}
+
+		HealthBar.fillAmount = health / maxHealth;
 	}
 
 	private void Die()
 	{
 		// TODO: DO this more safely!
+		Destroy(Instantiate(DeathEffectParticlePrefab, new Vector3(transform.position.x, transform.position.y+2, transform.position.z), DeathEffectParticlePrefab.transform.rotation), 3);
 		GameObject.FindObjectOfType<ScoreManager>().money += moneyValue;
 		Destroy(gameObject);
 	}
