@@ -10,23 +10,93 @@ ModelImporter:
     100004: Cylinder
     100006: Cylinder_001
     100008: //RootNode
+    100010: Circle
+    100012: Circle_001
+    100014: Circle_002
+    100016: Circle_003
+    100018: Circle_004
+    100020: Circle_005
+    100022: Circle_006
+    100024: Circle_007
+    100026: Circle_008
+    100028: Circle_009
+    100030: Cylinder_000
+    100032: Cylinder_002
+    100034: Muzzle01
+    100036: Muzzle02
+    100038: Muzzle01_001
+    100040: MuzzleOrigin01
+    100042: MuzzleOrigin02
     400000: Cube
     400002: Cube_001
     400004: Cylinder
     400006: Cylinder_001
     400008: //RootNode
+    400010: Circle
+    400012: Circle_001
+    400014: Circle_002
+    400016: Circle_003
+    400018: Circle_004
+    400020: Circle_005
+    400022: Circle_006
+    400024: Circle_007
+    400026: Circle_008
+    400028: Circle_009
+    400030: Cylinder_000
+    400032: Cylinder_002
+    400034: Muzzle01
+    400036: Muzzle02
+    400038: Muzzle01_001
+    400040: MuzzleOrigin01
+    400042: MuzzleOrigin02
     2300000: Cube
     2300002: Cube_001
     2300004: Cylinder
     2300006: Cylinder_001
+    2300008: Circle
+    2300010: Circle_001
+    2300012: Circle_002
+    2300014: Circle_003
+    2300016: Circle_004
+    2300018: Circle_005
+    2300020: Circle_006
+    2300022: Circle_007
+    2300024: Circle_008
+    2300026: Circle_009
+    2300028: Cylinder_000
+    2300030: Cylinder_002
     3300000: Cube
     3300002: Cube_001
     3300004: Cylinder
     3300006: Cylinder_001
+    3300008: Circle
+    3300010: Circle_001
+    3300012: Circle_002
+    3300014: Circle_003
+    3300016: Circle_004
+    3300018: Circle_005
+    3300020: Circle_006
+    3300022: Circle_007
+    3300024: Circle_008
+    3300026: Circle_009
+    3300028: Cylinder_000
+    3300030: Cylinder_002
     4300000: Cube_001
     4300002: Cylinder_001
     4300004: Cylinder
     4300006: Cube
+    4300008: Cylinder_000
+    4300010: Circle_009
+    4300012: Circle_008
+    4300014: Circle_007
+    4300016: Circle_006
+    4300018: Circle_005
+    4300020: Circle_004
+    4300022: Circle_003
+    4300024: Circle_002
+    4300026: Circle_001
+    4300028: Circle
+    4300030: Cylinder_002
     7400000: Default Take
     9500000: //RootNode
   materials:
