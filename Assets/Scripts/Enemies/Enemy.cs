@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
 	GameObject pathGO;
 	Transform targetPathNode;
 	int pathNodeIndex = 0;
+	public int enemyId = 0;
 	public GameObject DeathEffectParticlePrefab;
 
 	public float speed = 10;
@@ -74,7 +75,7 @@ public class Enemy : MonoBehaviour
 	void ReachGoal()
 	{
 		GameObject.FindObjectOfType<ScoreManager>().LoseLife();
-		Destroy(gameObject);
+		Die();
 	}
 
 	public void TakeDamage(float damage)
@@ -93,6 +94,8 @@ public class Enemy : MonoBehaviour
 		// TODO: DO this more safely!
 		Destroy(Instantiate(DeathEffectParticlePrefab, new Vector3(transform.position.x, transform.position.y+2, transform.position.z), DeathEffectParticlePrefab.transform.rotation), 3);
 		GameObject.FindObjectOfType<ScoreManager>().money += moneyValue;
+		GameObject.FindObjectOfType<EnemyManager>().AliveEnemies.Remove(enemyId);
+		Debug.Log(GameObject.FindObjectOfType<EnemyManager>().AliveEnemies.Count);
 		Destroy(gameObject);
 	}
 }

@@ -27,6 +27,16 @@ ModelImporter:
     100038: Muzzle01_001
     100040: MuzzleOrigin01
     100042: MuzzleOrigin02
+    100044: body
+    100046: Empty
+    100048: MuzzleBody
+    100050: turret
+    100052: Empty_001
+    100054: MuzzleBody01
+    100056: MuzzleBody02
+    100058: head
+    100060: muzzle01
+    100062: muzzle02
     400000: Cube
     400002: Cube_001
     400004: Cylinder
@@ -49,6 +59,16 @@ ModelImporter:
     400038: Muzzle01_001
     400040: MuzzleOrigin01
     400042: MuzzleOrigin02
+    400044: body
+    400046: Empty
+    400048: MuzzleBody
+    400050: turret
+    400052: Empty_001
+    400054: MuzzleBody01
+    400056: MuzzleBody02
+    400058: head
+    400060: muzzle01
+    400062: muzzle02
     2300000: Cube
     2300002: Cube_001
     2300004: Cylinder
@@ -65,6 +85,14 @@ ModelImporter:
     2300026: Circle_009
     2300028: Cylinder_000
     2300030: Cylinder_002
+    2300032: body
+    2300034: MuzzleBody
+    2300036: turret
+    2300038: MuzzleBody01
+    2300040: MuzzleBody02
+    2300042: head
+    2300044: muzzle01
+    2300046: muzzle02
     3300000: Cube
     3300002: Cube_001
     3300004: Cylinder
@@ -81,6 +109,14 @@ ModelImporter:
     3300026: Circle_009
     3300028: Cylinder_000
     3300030: Cylinder_002
+    3300032: body
+    3300034: MuzzleBody
+    3300036: turret
+    3300038: MuzzleBody01
+    3300040: MuzzleBody02
+    3300042: head
+    3300044: muzzle01
+    3300046: muzzle02
     4300000: Cube_001
     4300002: Cylinder_001
     4300004: Cylinder
@@ -97,6 +133,14 @@ ModelImporter:
     4300026: Circle_001
     4300028: Circle
     4300030: Cylinder_002
+    4300032: MuzzleBody
+    4300034: turret
+    4300036: body
+    4300038: MuzzleBody02
+    4300040: MuzzleBody01
+    4300042: head
+    4300044: muzzle02
+    4300046: muzzle01
     7400000: Default Take
     9500000: //RootNode
   materials:

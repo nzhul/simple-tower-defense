@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
 	float spawnCooldown = .5f;
 	float spawnCooldownRepaining = 3;
+	EnemyManager eManager;
 
 	[System.Serializable]
 	public class WaveComponent
@@ -20,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-
+		eManager = GameObject.FindObjectOfType<EnemyManager>();
 	}
 
 	// Update is called once per frame
@@ -39,7 +41,11 @@ public class EnemySpawner : MonoBehaviour
 				{
 					wc.spawned++;
 					// Spawn it!
-					Instantiate(wc.enemyPrefab, this.transform.position, this.transform.rotation);
+					GameObject newEnemyObject = Instantiate(wc.enemyPrefab, this.transform.position, this.transform.rotation) as GameObject;
+					Enemy newEnemy = newEnemyObject.GetComponent<Enemy>();
+					newEnemy.enemyId = eManager.currentEnemyId;
+                    eManager.AliveEnemies.Add(newEnemy.enemyId,newEnemy.gameObject);
+					eManager.currentEnemyId++;
 					didSpawn = true;
 					break;
 				}
