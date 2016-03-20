@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Shell : MonoBehaviour {
 
@@ -7,10 +8,41 @@ public class Shell : MonoBehaviour {
 	public float firingAngle = 45.0f;
 	public float gravity = 9.8f;
 	//float elapse_time = 0;
+	public bool isTargetReached = false;
+	public float damage = 1f;
+	public float radius = 1f;
 
 	void Start()
 	{
 		StartCoroutine(SimulateProjectile());
+	}
+
+	void Update()
+	{
+		if (isTargetReached)
+		{
+			DoBulletHit();
+			// TODO: Spawn explosion effect and spawn explosion mark on the ground (image)
+		}
+	}
+
+	private void DoBulletHit()
+	{
+		Collider[] cols = Physics.OverlapSphere(transform.position, radius);
+
+		foreach (Collider c in cols)
+		{
+			Enemy e = c.GetComponent<Enemy>();
+			if (e != null)
+			{
+				// TODO: You could do a falloff of damage based on distance, but thats rare for TD games
+				e.GetComponent<Enemy>().TakeDamage(damage);
+			}
+		}
+
+		// TODO: Maybe spawn a cool "explosion" object here ?
+
+		Destroy(gameObject);
 	}
 
 	IEnumerator SimulateProjectile()
@@ -44,6 +76,11 @@ public class Shell : MonoBehaviour {
 			elapse_time += Time.deltaTime;
 
 			yield return null;
+		}
+
+		if (elapse_time >= flightDuration)
+		{
+			isTargetReached = true;
 		}
 	}
 

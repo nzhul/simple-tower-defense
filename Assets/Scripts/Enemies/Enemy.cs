@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
 	public int enemyId = 0;
 	public GameObject DeathEffectParticlePrefab;
 
+	public string enemyName;
 	public float speed = 10;
 	public float health = 1f;
 	public int moneyValue = 10;
@@ -19,10 +20,17 @@ public class Enemy : MonoBehaviour
 
 	public Image HealthBar;
 
+	EnemyManager eManager;
+	Spawner spawner;
+	ScoreManager sManager;
+
 	void Start()
 	{
 		pathGO = GameObject.Find("Path");
 		maxHealth = health;
+		eManager = FindObjectOfType<EnemyManager>();
+		spawner = FindObjectOfType<Spawner>();
+		sManager = FindObjectOfType<ScoreManager>();
 	}
 
 	void Update()
@@ -75,7 +83,7 @@ public class Enemy : MonoBehaviour
 	void ReachGoal()
 	{
 		GameObject.FindObjectOfType<ScoreManager>().LoseLife();
-		Die();
+		Die(false);
 	}
 
 	public void TakeDamage(float damage)
@@ -83,19 +91,25 @@ public class Enemy : MonoBehaviour
 		health -= damage;
 		if (health <= 0)
 		{
-			Die();
+			Die(true);
 		}
 
 		HealthBar.fillAmount = health / maxHealth;
 	}
 
-	private void Die()
+	private void Die(bool shouldGiveMoney)
 	{
 		// TODO: DO this more safely!
 		Destroy(Instantiate(DeathEffectParticlePrefab, new Vector3(transform.position.x, transform.position.y+2, transform.position.z), DeathEffectParticlePrefab.transform.rotation), 3);
-		GameObject.FindObjectOfType<ScoreManager>().money += moneyValue;
+		if (shouldGiveMoney)
+		{
+			GameObject.FindObjectOfType<ScoreManager>().Money += moneyValue;
+		}
 		GameObject.FindObjectOfType<EnemyManager>().AliveEnemies.Remove(enemyId);
-		Debug.Log(GameObject.FindObjectOfType<EnemyManager>().AliveEnemies.Count);
+		if (eManager.AliveEnemies.Count == 0)
+		{
+			sManager.CurrentWave = spawner.waveIndex + 1;
+		}
 		Destroy(gameObject);
 	}
 }
