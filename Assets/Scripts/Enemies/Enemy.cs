@@ -88,9 +88,11 @@ public class Enemy : MonoBehaviour
 
 	public void TakeDamage(float damage)
 	{
+		//AudioManager.instance.PlaySound("Impact", transform.position);
 		health -= damage;
 		if (health <= 0)
 		{
+			AudioManager.instance.PlaySound("EnemyDeath", transform.position);
 			Die(true);
 		}
 

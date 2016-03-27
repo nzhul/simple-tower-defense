@@ -38,7 +38,7 @@ public class Spawner : MonoBehaviour {
 		{
 			enemySpawnTimeRemaining = enemySpawnCooldown;
 
-			Debug.Log("Instantiate enemy: waveIndex: " + waveIndex + "; componentIndex: " + componentIndex);
+			//Debug.Log("Instantiate enemy: waveIndex: " + waveIndex + "; componentIndex: " + componentIndex);
 			scoreManager.CurrenyEnemy = currentWaveComponent.spawnedEnemyCount + 1;
 			scoreManager.EnemiesCount = currentWaveComponent.enemiesCount;
 			if (componentIndex < currentWave.waveComponents.Length - 1)
@@ -62,18 +62,17 @@ public class Spawner : MonoBehaviour {
 
 			currentWaveComponent.spawnedEnemyCount++;
 
-			if (currentWaveComponent.enemiesCount == currentWaveComponent.spawnedEnemyCount)
+			if (currentWaveComponent.enemiesCount == currentWaveComponent.spawnedEnemyCount && !isFinalWave)
 			{
-				if (componentIndex != currentWave.waveComponents.Length - 1)
-				{
-					componentIndex++;
-					enemySpawnTimeRemaining += nextComponentSpawnDelay;
-				}
+				componentIndex++;
+				enemySpawnTimeRemaining += nextComponentSpawnDelay;
 			}
 
-			if (componentIndex == currentWave.waveComponents.Length - 1 && !isFinalWave)
+			if (componentIndex == currentWave.waveComponents.Length && !isFinalWave)
 			{
 				waveIndex++;
+				scoreManager.CurrentWave = waveIndex + 1;
+				componentIndex = 0;
 				enemySpawnTimeRemaining += nextWaveDelay;
 			}
 

@@ -13,6 +13,9 @@ public class BaseTower : MonoBehaviour {
 	public float damage = 1;
 	public float radius = 0;
 	public int cost = 5;
+	public string name;
+	public string description;
+
 
 	EnemyManager eManager;
 
@@ -21,7 +24,7 @@ public class BaseTower : MonoBehaviour {
 		eManager = GameObject.FindObjectOfType<EnemyManager>();
 	}
 
-	void Update()
+	protected virtual void Update()
 	{
 		Dictionary<int, GameObject> enemies = eManager.AliveEnemies;
 		GameObject nearestEnemy = null;

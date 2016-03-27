@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour {
 
-	private int lives = 20;
+	private int lives = 80;
 	private int money = 265;
 	private int currentWave = 1;
 	private int wavesCount = 7;

@@ -6,6 +6,7 @@ public class Turret : BaseTower {
 	public Transform turretTransform;
 	public Transform muzzle1;
 	public Transform muzzle2;
+	public AudioClip shootAudio;
 
 	protected override void OnUpdate(params object[] values)
 	{
@@ -36,6 +37,7 @@ public class Turret : BaseTower {
 		b2.damage = damage;
 		b2.radius = radius;
 
-		base.ShootAt(e);
+		float customVolumePercent = .2f;
+		AudioManager.instance.PlaySound(shootAudio, transform.position, customVolumePercent);
 	}
 }

@@ -6,14 +6,16 @@ public class Artillery : BaseTower {
 	public Transform silo;
 	private bool isReloading;
 	public float reloadTime = 1f;
+	public AudioClip shootAudio;
 
-	protected override void ShootAt(GameObject e)
+    protected override void ShootAt(GameObject e)
 	{
 		GameObject bullet1 = (GameObject)Instantiate(base.projectilePrefab, transform.position, transform.rotation);
 		Shell b1 = bullet1.GetComponent<Shell>();
 		b1.damage = base.damage;
 		b1.radius = base.radius;
 		b1.target = e.transform;
+		AudioManager.instance.PlaySound(shootAudio, transform.position);
 	}
 
 	protected override void OnShoot()
